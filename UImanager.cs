@@ -16,10 +16,9 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         playGameButton.onClick.AddListener(OnPlayGameClicked);
-        tutorialButton.onClick.AddListener(OnTutorialClicked);
         customizeButton.onClick.AddListener(OnCustomizeClicked);
         EXIT_button.onClick.AddListener(OnExitClicked);
-        
+
 
         SavedScore.text = "" + GetSavedScore().ToString();
     }
@@ -32,12 +31,6 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Play Game 버튼 클릭됨");
         SceneManager.LoadScene("MainGame");
-    }
-
-    private void OnTutorialClicked()
-    {
-        Debug.Log("Tutorial 버튼 클릭됨");
-        // SceneManager.LoadScene("TutorialScene");
     }
 
     private void OnCustomizeClicked()
