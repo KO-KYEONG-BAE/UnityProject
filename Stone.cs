@@ -1,22 +1,14 @@
+using System;
 using UnityEngine;
 
 public class Stone : MonoBehaviour
 {
-    void Start()
+    public GameObject stonePrefab; // Stone 프리팹
+    bool isActivated = true; // Stone 활성 여부
+    void Update()
     {
-        GetComponent<Rigidbody2D>().gravityScale = 2;
-    }
-    private bool isActivated = false;
-    
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Road") && !isActivated)
-        {
-            // Road랑 닿은 경우: 이제 trigger 모드로 전환
-            GetComponent<Rigidbody2D>().gravityScale = 0;
-            GetComponent<Collider2D>().isTrigger = true;
-            isActivated = true;
-        }
+        StoneDown();
+        // Stone이 활성화된 상태에서 아래로 떨어지도록
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +22,14 @@ public class Stone : MonoBehaviour
                 player.Hit();
             }
             Destroy(gameObject);
+        }
+    }
+
+    void StoneDown()
+    {
+        if (stonePrefab.transform.position.y > -4f && isActivated)
+        {
+            stonePrefab.transform.Translate(Vector2.down * Time.deltaTime * 10f);
         }
     }
 }

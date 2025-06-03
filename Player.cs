@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     private bool Grounded = true;
 
-    public BoxCollider2D PlayerCollider;
+    public CapsuleCollider2D PlayerCollider;
 
     private bool isInvincible = false;
     
